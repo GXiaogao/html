@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tlias智能学习辅助系统</title>
+    <style>
+        /* 页面全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 顶部导航栏 */
+        .navbar {
+            display: flex;                  /* 弹性布局，子元素同行显示 */
+            align-items: center;            /* 垂直居中 */
+            justify-content: space-between; /* 两端对齐：标题居左，链接居右 */
+            background-color: #d4a8a8;      /* 灰粉色背景 */
+            padding: 15px 30px;             /* 上下15px，左右30px 内边距 */
+        }
+
+        /* 标题样式 */
+        .navbar .title {
+            font-size: 32px;
+            font-weight: bold;              /* 加粗展示 */
+            /* 字体设置为楷体 */
+            font-family: "楷体";
+            /* 字体居中 */
+            text-align: center;
+            /* 整个标题居中 */
+            /* margin: 0 auto; */
+            color: #333;
+        }
+
+        /* 退出登录链接样式 */
+        .navbar .logout {
+            font-size: 16px;
+            color: #555;
+            text-decoration: none;          /* 去掉下划线 */
+            /* 在退出登录按钮旁设置一个终止图标 */
+            position: relative;
+
+        }
+
+        .navbar .logout:hover {
+            color: #c0392b;                 /* 鼠标悬停时变红 */
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- 第一部分：顶部导航栏 -->
+    <div class="navbar">
+        <h1 class="title">tlias智能学习辅助系统</h1>
+        <a href="#" class="logout">退出登录</a>
+    </div>
+</body>
+</html>

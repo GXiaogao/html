@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex布局</title>
+    <!-- <link rel="stylesheet" href="css/11.flex布局.css"> -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .flex-container {
+            display: flex; /* 设置为弹性布局 */
+            justify-content: space-around; /* 子元素在主轴上均匀分布 */
+            align-items: center; /* 子元素在交叉轴上居中对齐 */
+            height: 100vh; /* 容器高度为视口高度 */
+            flex-direction: row; /* 子元素水平方向排列 */
+            background-color: #f0f0f0; /* 背景颜色 */
+        }
+
+        .flex-item {
+            width: 100px; /* 子元素宽度 */
+            height: 100px; /* 子元素高度 */
+            background-color: #4CAF50; /* 背景颜色 */
+            color: rgb(20, 17, 17); /* 字体颜色 */
+            display: flex; /* 设置子元素为弹性布局 */
+            justify-content: center; /* 子元素内容在主轴上居中 */
+            align-items: center; /* 子元素内容在交叉轴上居中 */
+            font-size: 24px; /* 字体大小 */
+            border-radius: 10px; /* 圆角边框 */
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="flex-item">1</div>
+        <div class="flex-item">2</div>
+        <div class="flex-item">3</div>
+    </div>
+</body>
+</html>

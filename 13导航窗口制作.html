@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tlias 智能学习辅助系统</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", Arial, sans-serif;
+      color: #333;
+      background: #fff;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    /* 顶部标题栏 */
+    .header {
+      width: 100%;
+      height: 62px;
+      background: linear-gradient(#bfbfbf, #a9a9a9);
+      border-bottom: 1px solid #ddd;
+      position: relative;
+    }
+
+    .header-inner {
+      width: 1080px;
+      height: 62px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    .logout {
+      height: 48px;
+      padding: 0 20px;
+      border-left: 1px solid rgba(0, 0, 0, 0.16);
+      border-right: 1px solid rgba(255, 255, 255, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #f2f2f2;
+      font-size: 14px;
+      background: rgba(130, 130, 130, 0.35);
+      cursor: pointer;
+    }
+
+    .logout .icon {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #eee;
+      border-top-color: transparent;
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+    }
+
+    .logout .icon::before {
+      content: "";
+      width: 2px;
+      height: 9px;
+      background: #eee;
+      position: absolute;
+      top: -6px;
+      left: 6px;
+    }
+
+    /* 查询区域 */
+    .search-bar {
+      width: 100%;
+      height: 64px;
+      background: #fde1df;
+      border-bottom: 1px solid #f4d0ce;
+    }
+
+    .search-inner {
+      width: 1080px;
+      height: 64px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .form-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      color: #333;
+    }
+
+    .form-item label {
+      min-width: 34px;
+      text-align: right;
+    }
+
+    input,
+    select {
+      width: 212px;
+      height: 36px;
+      padding: 0 10px;
+      border: 1px solid #cfa9a7;
+      outline: none;
+      background: transparent;
+      color: #777;
+      font-size: 13px;
+    }
+
+    select {
+      appearance: auto;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-left: auto;
+    }
+
+    .btn {
+      width: 66px;
+      height: 36px;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .btn-search {
+      background: #168bd3;
+    }
+
+    .btn-clear {
+      background: #a8938f;
+    }
+
+    /* 表格区域 */
+    .content {
+      width: 1080px;
+      margin: 14px auto 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      height: 40px;
+      border: 1px solid #ddd;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    th {
+      background: #f4f4f4;
+      font-weight: 600;
+    }
+
+    td {
+      background: #fff;
+    }
+
+    .avatar-box {
+      width: 52px;
+      height: 30px;
+      margin: 0 auto;
+      border: 2px solid #ddd;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar-box::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      bottom: 4px;
+      width: 45px;
+      height: 22px;
+      background: #1596d4;
+      clip-path: polygon(0 80%, 28% 35%, 55% 70%, 78% 18%, 100% 48%, 100% 100%, 0 100%);
+    }
+
+    .avatar-box::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 32px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fff;
+      opacity: 0.9;
+    }
+
+    .operate a {
+      color: #f5a623;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    .operate a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1120px) {
+      .header-inner,
+      .search-inner,
+      .content {
+        width: 94%;
+      }
+
+      .search-inner {
+        gap: 14px;
+        flex-wrap: wrap;
+        height: auto;
+        padding: 12px 0;
+      }
+
+      .search-bar {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">tlias 智能学习辅助系统</div>
+        <div class="logout">
+          <span class="icon"></span>
+          <span>退出登录</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="search-bar">
+      <div class="search-inner">
+        <div class="form-item">
+          <label for="name">姓名</label>
+          <input id="name" type="text" placeholder="请输入员工姓名" />
+        </div>
+
+        <div class="form-item">
+          <label for="gender">性别</label>
+          <select id="gender">
+            <option>请选择</option>
+            <option>男</option>
+            <option>女</option>
+          </select>
+        </div>
+
+        <div class="form-item">
+          <label for="job">职位</label>
+          <select id="job">
+            <option>请选择</option>
+            <option>班主任</option>
+            <option>讲师</option>
+            <option>学工主管</option>
+            <option>教研主管</option>
+          </select>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-search">查询</button>
+          <button class="btn btn-clear">清空</button>
+        </div>
+      </div>
+    </section>
+
+    <main class="content">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 11%;">姓名</th>
+            <th style="width: 8%;">性别</th>
+            <th style="width: 12%;">头像</th>
+            <th style="width: 12%;">所属部门</th>
+            <th style="width: 12%;">职位</th>
+            <th style="width: 14%;">入职日期</th>
+            <th style="width: 14%;">最后操作时间</th>
+            <th style="width: 17%;">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>赵敏</td>
+            <td>女</td>
+            <td><div class="avatar-box"></div></td>
+            <td>学工部</td>
+            <td>班主任</td>
+            <td>2008-12-18</td>
+            <td>2023-07-22 12:05:20</td>
+            <td class="operate"><a href="#">编辑</a><a href="#">删除</a></td>
+          </tr>
+          <tr>
+            <td>风清扬</td>
+            <td>男</td>
+            <td><div class="avatar-box"></div></td>
+            <td>教研部</td>
+            <td>讲师</td>
+            <td>2015-07-22</td>
+            <td>2022-07-22 15:00:00</td>
+            <td class="operate"><a href="#">编辑</a><a href="#">删除</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单布局</title>
+    <!-- <link rel="stylesheet" href="css/11.flex布局.css"> -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- form表单:
+      action: 提交表单数据的URL
+      method: 提交表单数据的方法（get或post） 
+       get: 以URL参数的形式提交数据，不建议用于敏感信息；在浏览器中get请求的大小是有限制的，不适合提交大数据量的表单
+       post: 以请求体的形式提交数据，建议用于敏感信息；
+      注意：表单项要想能够采集数据，必须要有name属性，表示当前表单项的名称，提交表单时会以name=value的形式提交数据
+    -->
+    <form action="/save" method="post">
+        <label for="username">用户名:</label>
+        <input type="text" id="username" name="username">
+        <br><br>
+        <label for="password">密码:</label>
+        <input type="password" id="password" name="password">
+        <br><br>
+        <label for="remember">记住我</label>
+        <input type="checkbox" id="remember" name="remember">
+        <br><br>
+        <label for="gender">性别:</label>
+        <label><input type="radio" id="gender" name="gender" value="male">男</label>
+        <label><input type="radio" id="gender" name="gender" value="female">女</label>
+        <br><br>
+        <label for="country">国家:</label>
+        <select name="country" id="country">
+            <option value="china">中国</option>
+            <option value="usa">美国</option>
+            <option value="uk">英国</option>
+        </select>
+        <br><br>    
+        <label for="hobby">爱好:</label>
+        <label><input type="checkbox" id="hobby" name="hobby" value="sports">运动</label>
+        <label><input type="checkbox" id="hobby" name="hobby" value="music">音乐</label>
+        <label><input type="checkbox" id="hobby" name="hobby" value="reading">阅读</label>
+        <br><br>
+        <label for="age">年龄:</label>
+        <input type="number" id="age" name="age">
+        <br><br>
+        <label for="email">邮箱:</label>
+        <input type="email" id="email" name="email">
+        <br><br>
+        <label for="phone">手机号:</label>
+        <input type="tel" id="phone" name="phone">  
+        <br><br>
+        <label for="date">日期:</label>
+        <input type="date" name="date" id="date">
+        <br><br>
+        <label for="time">时间:</label>
+        <input type="time" name="time" id="time">
+        <br><br>
+        <label for="datetime">日期和时间:</label>
+        <input type="datetime-local" name="datetime" id="datetime">
+        <br><br>
+        <label for="degree">学历:</label>   
+        <select name="degree" id="degree">
+            <option value="bachelor">本科</option>
+            <option value="master">硕士</option>
+            <option value="phd">博士</option>
+        </select>
+        <br><br>
+        <label for="file">上传文件:</label>
+        <input type="file" id="file" name="file">
+        <br><br>
+        <label for="textarea">请输入:</label>
+        <textarea name="textarea" id="textarea" cols="30" rows="10">
+            请输入内容...
+        </textarea>
+        <br><br>
+        <input type="button" value="按钮">
+        <input type="reset" value="重置">
+        <input type="submit" value="提交">
+        <br><br>
+
+    </form>
+</body>
+</html>
